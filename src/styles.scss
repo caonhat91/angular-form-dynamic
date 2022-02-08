@@ -1,0 +1,169 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+    --red: rgb(255, 0, 0);
+    --green: rgb(0, 128, 0);
+    --green40: rgba(0, 128, 0, 0.4);
+    --gray: rgb(128, 128, 128);
+    --white: rgb(255, 255, 255);
+}
+
+button {
+    outline: 0;
+    min-height: 25px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--gray);
+    border-radius: 0.25rem;
+    background-color: var(--white);
+    padding: 0.25rem 0.75rem;
+    transition: 0.3s;
+
+    &:active {
+        border-color: var(--green);
+        background-color: var(--green40);
+    }
+
+    &:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 8px var(--green);
+    }
+
+    &:hover,
+    &:active {
+        border-color: var(--green);
+        background-color: var(--green);
+        color: white;
+        opacity: 0.75;
+    }
+}
+
+input,
+select {
+    position: relative;
+    outline: 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--gray);
+    border-radius: 0.25rem;
+    height: 28px;
+    line-height: 28px;
+    padding: 0.25rem 0.75rem;
+    transition: 0.3s;
+
+    &:not([type="radio"]) {
+        &:focus {
+            border-color: var(--green);
+            box-shadow: 0 0 5px var(--green);
+        }
+
+        &.ng-invalid.ng-touched,
+        &.ng-invalid.ng-dirty {
+            border-color: var(--red);
+            // box-shadow: 0 0 5px var(--red);
+        }
+
+        &.ng-valid {
+            border-color: var(--green);
+            // box-shadow: 0 0 5px var(--green);
+        }
+    }
+
+    &[type="radio"] {
+        &:focus {
+            &::after {
+                border-color: var(--green);
+                box-shadow: 0 0 5px var(--green);
+            }
+        }
+
+        &.ng-invalid.ng-touched,
+        &.ng-invalid.ng-dirty {
+            &::after {
+                border-color: var(--red);
+            }
+        }
+
+        &.ng-valid {
+            &:checked::before {
+                background-color: var(--green);
+            }
+            &:checked::after {
+                border-color: var(--green);
+                // box-shadow: 0 0 5px var(--green);
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-55%, -50%);
+            border-radius: 50%;
+            background-color: white;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-53%, -50%);
+            border-width: 1px;
+            border-style: solid;
+            border-color: var(--gray);
+            border-radius: 50%;
+        }
+    }
+}
+
+.grid-cols-2 {
+    display: flex;
+    > * {
+        flex: 1;
+    }
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-group-inline {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--green40);
+}
+
+label {
+    margin-right: 0.5rem;
+}
+
+.alert {
+    position: absolute;
+    right: 0;
+    padding: 0.125rem 0.5rem;
+    color: var(--red);
+}
