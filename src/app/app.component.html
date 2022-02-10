@@ -61,6 +61,7 @@
                     <option value="element">Element</option>
                     <option value="table">Table</option>
                 </select>
+                <small>Using with control is array</small>
                 <div class="alert" *ngIf="elementType.invalid && (elementType.dirty || elementType.touched)">
                     <small *ngIf="elementType.errors?.['required']">
                         Element type is required.
