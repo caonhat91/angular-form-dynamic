@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ControlDynamic, ControlInputText } from '../../model';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { ControlDynamic } from '../../model';
 
 @Component({
   selector: 'ng-array',
@@ -28,7 +28,6 @@ export class ArrayComponent implements OnInit {
   @Input() baseForm!: FormGroup;
   @Input() form!: FormArray;
   confs!: ControlDynamic[];
-  order = 0;
 
   constructor() { }
 
@@ -37,23 +36,7 @@ export class ArrayComponent implements OnInit {
   }
 
   addGroup(): void {
-    const order = ++this.order;
-    const controlName = 'code' + order;
-    const inputTextControl = new ControlInputText(
-      {
-        controlName: controlName,
-        label: 'Code',
-        order: order
-      }
-    );
-    this.confs.push(inputTextControl);
-
-    const group: any = {};
-    this.confs.forEach((control: ControlDynamic) => {
-      group[control.controlName] = control.required ? new FormControl(null, Validators.required) : new FormControl();
-    });
-    const formGroup = new FormGroup(group);
-    this.form.push(formGroup);
+    this.form.push(new FormGroup({}));
   }
 
   formControl(ri: number): FormControl {
