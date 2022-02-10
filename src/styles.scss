@@ -23,13 +23,13 @@ button {
         background-color: var(--green40);
     }
 
-    &:focus {
+    &:focus:not(:disabled) {
         border-color: var(--green);
         box-shadow: 0 0 8px var(--green);
     }
 
-    &:hover,
-    &:active {
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
         border-color: var(--green);
         background-color: var(--green);
         color: white;
@@ -155,6 +155,34 @@ select {
 
 .btn-primary {
     background-color: var(--green40);
+}
+
+.btn-remove {
+    position: relative;
+    min-height: 25px;
+    min-width: 25px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 14px;
+        height: 2px;
+        background-color: var(--red);
+        border-radius: 14px;
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
 }
 
 label {

@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ControlDynamic, ControlInputText } from './model';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ControlDynamic, ControlInputText } from './modules/form-dynamic/model';
 
 @Component({
   selector: 'ng-root',
@@ -77,12 +77,13 @@ export class AppComponent implements OnInit {
         group[control.controlName] = control.required ? new FormControl(null, Validators.required) : new FormControl();
       }
       if (control.type == 'group') {
+        group[control.controlName] = new FormGroup({});
       }
       if (control.type == 'array') {
+        group[control.controlName] = new FormArray([]);
       }
     });
-    console.log(group)
-    this.formDynamic = new FormGroup(group);
+    this.formDynamic = new FormGroup(group); // gen form dynamic or addControl funciton
   }
 
   private get invalid(): boolean {

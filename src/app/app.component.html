@@ -82,5 +82,7 @@
         <pre>{{formDynamic?.value || {} | json}}</pre>
         <pre>{{controlDynamicLst | json}}</pre>
     </form>
-    <ng-form-dynamic [configs]="controlDynamicLst" [form]="formDynamic"></ng-form-dynamic>
+    <form [formGroup]="formDynamic" novalidate autocomplete="off">
+        <ng-form-dynamic [(configs)]="controlDynamicLst" [form]="formDynamic"></ng-form-dynamic>
+    </form>
 </div>
