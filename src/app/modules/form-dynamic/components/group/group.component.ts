@@ -5,12 +5,10 @@ import { ControlDynamic, ControlInputText } from '../../model';
 @Component({
   selector: 'ng-group',
   template: `
-    <div [formGroup]="form">
-      <button (click)="addControl()">Add Control</button>
-      <ng-template ngFor [ngForOf]="confs" let-conf>
-        <ng-control [config]="conf" [form]="form" (removed)="onRemoveControl($event)"></ng-control>
-      </ng-template>
-    </div>
+    <button (click)="addControl()">Add Control</button>
+    <ng-template ngFor [ngForOf]="confs" let-conf>
+      <ng-control [config]="conf" [form]="form" (removed)="onRemoveControl($event)"></ng-control>
+    </ng-template>
   `,
   styles: [
   ]

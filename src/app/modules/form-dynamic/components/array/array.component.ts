@@ -13,7 +13,7 @@ import { ControlDynamic } from '../../model';
 
       <div class="grid" *ngSwitchDefault>
         <button (click)="addGroup()">Add Group</button>
-        <div *ngFor="let conf of confs; index as ri" [formArrayName]="config.controlName">
+        <div *ngFor="let control of form.controls; index as ri" [formArrayName]="config.controlName">
           <ng-group [form]="formGroup(ri)"></ng-group>
         </div>
       </div>
@@ -27,13 +27,10 @@ export class ArrayComponent implements OnInit {
   @Input() config!: ControlDynamic;
   @Input() baseForm!: FormGroup;
   @Input() form!: FormArray;
-  confs!: ControlDynamic[];
 
   constructor() { }
 
-  ngOnInit(): void {
-    this.confs = [];
-  }
+  ngOnInit(): void { }
 
   addGroup(): void {
     this.form.push(new FormGroup({}));

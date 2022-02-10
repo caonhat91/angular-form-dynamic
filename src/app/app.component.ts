@@ -49,41 +49,50 @@ export class AppComponent implements OnInit {
 
   clear(): void {
     this.reactiveForm = this.buildForm;
-    this.controlDynamicLst = [];
     this.order = 0;
+    this.controlDynamicLst = [];
+    this.formDynamic = new FormGroup({});
   }
 
   onSubmit(): void {
     if (this.invalid) {
       return;
     }
-    if (this.controlType.value == 'inputText') {
-      const inputTextControl = new ControlInputText(
-        {
-          type: this.type.value,
-          elementType: this.elementType.value,
-          controlName: this.controlName.value,
-          label: this.controlLabel.value,
-          required: this.isRequire.value,
-          order: this.order++
-        }
-      );
-      this.controlDynamicLst.push(inputTextControl);
+    const isExisted = this.controlDynamicLst.find(conf => conf.controlName === this.controlName.value);
+    if (!isExisted) {
+      if (this.controlType.value == 'inputText') {
+        const inputTextControl = new ControlInputText(
+          {
+            type: this.type.value,
+            elementType: this.elementType.value,
+            controlName: this.controlName.value,
+            label: this.controlLabel.value,
+            required: this.isRequire.value,
+            order: this.order++
+          }
+        );
+        this.controlDynamicLst.push(inputTextControl);
+      }
+      if (this.controlType.value == 'select') {
+        // 
+      }
     }
 
     const group: any = {};
     this.controlDynamicLst.forEach((control: ControlDynamic) => {
+      let formElement;
       if (control.type == 'control') {
-        group[control.controlName] = control.required ? new FormControl(null, Validators.required) : new FormControl();
+        formElement = control.required ? new FormControl(null, Validators.required) : new FormControl();
       }
       if (control.type == 'group') {
-        group[control.controlName] = new FormGroup({});
+        formElement = new FormGroup({});
       }
       if (control.type == 'array') {
-        group[control.controlName] = new FormArray([]);
+        formElement = new FormArray([]);
       }
+
+      formElement && this.formDynamic.addControl(control.controlName, formElement);
     });
-    this.formDynamic = new FormGroup(group); // gen form dynamic or addControl funciton
   }
 
   private get invalid(): boolean {

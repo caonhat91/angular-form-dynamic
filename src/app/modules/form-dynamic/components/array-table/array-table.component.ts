@@ -19,7 +19,7 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
         <ng-template ngFor [ngForOf]="tables.value" let-record let-ri="index">
           <tr>
             <td>
-              <button (click)="deleteRow(ri)">Delete</button>
+              <span class="btn-remove" (click)="deleteRow(ri)"></span>
             </td>
             <td>{{record.code}}</td>
             <td>{{record.name}}</td>
