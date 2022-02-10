@@ -44,11 +44,20 @@ export class AppComponent implements OnInit {
   constructor(private host: ElementRef) { }
 
   ngOnInit(): void {
+    this.reactiveForm = this.buildForm;
     this.clear();
   }
 
   clear(): void {
-    this.reactiveForm = this.buildForm;
+    // this.reactiveForm.reset();
+    this.reactiveForm.patchValue({
+      type: 'control',
+      controlType: 'inputText',
+      controlLabel: '',
+      controlName: '',
+      elementType: 'element',
+      isRequire: false,
+    });
     this.order = 0;
     this.controlDynamicLst = [];
     this.formDynamic = new FormGroup({});
@@ -107,11 +116,11 @@ export class AppComponent implements OnInit {
 
   private get buildForm(): FormGroup {
     return new FormGroup({
-      type: new FormControl('control', Validators.required),
-      controlType: new FormControl('inputText', Validators.required),
-      controlName: new FormControl('', Validators.required),
+      type: new FormControl('', Validators.required),
+      controlType: new FormControl('', Validators.required),
       controlLabel: new FormControl('', Validators.required),
-      elementType: new FormControl('element', Validators.required),
+      controlName: new FormControl('', Validators.required),
+      elementType: new FormControl('', Validators.required),
       isRequire: new FormControl(false),
     });
   }

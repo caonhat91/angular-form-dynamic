@@ -1,17 +1,17 @@
 <div class="grid-cols-2">
-    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
+    <form class="ng-config" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
         <div class="grid">
             <div class="control-group-inline">
                 <div class="control-group">
-                    <label for="typeControl">Control:</label>
+                    <label for="typeControl" class="ng-control-color">Control:</label>
                     <input type="radio" name="type" id="typeControl" formControlName="type" value="control" required>
                 </div>
                 <div class="control-group">
-                    <label for="typeGroup">Group:</label>
+                    <label for="typeGroup" class="ng-group-color">Group:</label>
                     <input type="radio" name="type" id="typeGroup" formControlName="type" value="group" required>
                 </div>
                 <div class="control-group">
-                    <label for="typeArray">Array:</label>
+                    <label for="typeArray" class="ng-array-color">Array:</label>
                     <input type="radio" name="type" id="typeArray" formControlName="type" value="array" required>
                 </div>
 

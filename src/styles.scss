@@ -5,6 +5,12 @@ html {
     --green40: rgba(0, 128, 0, 0.4);
     --gray: rgb(128, 128, 128);
     --white: rgb(255, 255, 255);
+    --control: #ce93d8;
+    --controlLight: #e1bee7;
+    --group: #80cbc4;
+    --groupLight: #b2dfdb;
+    --array: #ffab91;
+    --arrayLight: #ffccbc;
 }
 
 button {
@@ -121,6 +127,19 @@ select {
     }
 }
 
+label {
+    margin-right: 0.5rem;
+}
+
+table {
+    border-collapse: collapse;
+
+    tr th,
+    tr td {
+        border: 1px solid #333;
+    }
+}
+
 .grid-cols-2 {
     display: flex;
     > * {
@@ -165,8 +184,9 @@ select {
     place-items: center;
     cursor: pointer;
 
-    &::before, &::after {
-        content: '';
+    &::before,
+    &::after {
+        content: "";
         position: absolute;
         top: 50%;
         left: 50%;
@@ -185,13 +205,47 @@ select {
     }
 }
 
-label {
-    margin-right: 0.5rem;
-}
-
 .alert {
     position: absolute;
     right: 0;
     padding: 0.125rem 0.5rem;
     color: var(--red);
+}
+
+.ng-config {
+    // background-color: #eceff1;
+}
+
+.ng-control,
+.ng-group,
+.ng-array {
+    padding: 0.5rem;
+}
+
+.ng-control-color {
+    color: var(--control);
+}
+
+.ng-control {
+    background-image: linear-gradient(
+        120deg,
+        var(--controlLight),
+        var(--control)
+    );
+}
+
+.ng-group-color {
+    color: var(--group);
+}
+
+.ng-group {
+    background-image: linear-gradient(120deg, var(--groupLight), var(--group));
+}
+
+.ng-array-color {
+    color: var(--array);
+}
+
+.ng-array {
+    background-image: linear-gradient(120deg, var(--arrayLight), var(--array));
 }

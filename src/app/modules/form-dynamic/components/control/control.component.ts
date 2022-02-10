@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ControlDynamic } from '../../model';
 
 @Component({
   selector: 'ng-control',
   template: `
-    <div [formGroup]="form">
+    <div class="ng-control" [formGroup]="form">
       <div class="grid" [ngSwitch]="config.controlType">
           
         <div class="control-group" *ngSwitchCase="'inputText'">
@@ -13,6 +13,12 @@ import { ControlDynamic } from '../../model';
           <input type="text" [id]="config.controlName" [formControlName]="config.controlName"
             [attr.required]="config.required ? true : null">
           <span class="btn-remove" (click)="removed.emit(config.controlName)"></span>
+
+          <div class="alert" *ngIf="formControl(config.controlName).invalid && (formControl(config.controlName).dirty || formControl(config.controlName).touched)">
+            <small *ngIf="formControl(config.controlName).errors?.['required']">
+                Type is required.
+            </small>
+          </div>
         </div>
 
       </div>
@@ -29,6 +35,10 @@ export class ControlComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  formControl(controlName: string): FormControl {
+    return this.form.get(controlName) as FormControl;
   }
 
 }

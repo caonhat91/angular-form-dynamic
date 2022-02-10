@@ -5,7 +5,7 @@ import { ControlDynamic } from '../../model';
 @Component({
   selector: 'ng-array',
   template: `
-    <div class="grid" [formGroup]="baseForm" [ngSwitch]="config.elementType">
+    <div class="grid ng-array" [formGroup]="baseForm" [ngSwitch]="config.elementType">
 
       <div class="grid" *ngSwitchCase="'table'">
         <ng-array-table [tables]="form"></ng-array-table>

@@ -4,7 +4,7 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'ng-array-table',
   template: `
-    <table>
+    <table class="ng-array-table">
       <caption>
         <button (click)="addRow()">Add Row</button>
       </caption>
@@ -28,19 +28,7 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
       </tbody>
     </table>
   `,
-  styles: [
-    `
-      :host {
-        table {
-          border-collapse: collapse;
-
-          tr th, tr td {
-            border: 1px solid #333;
-          }
-        }
-      }
-    `
-  ]
+  styles: []
 })
 export class ArrayTableComponent implements OnInit {
   @Input() tables!: FormArray;
