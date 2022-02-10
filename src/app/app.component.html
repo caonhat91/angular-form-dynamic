@@ -80,7 +80,6 @@
         </div>
 
         <pre>{{formDynamic?.value || {} | json}}</pre>
-        <pre>{{controlDynamicLst | json}}</pre>
     </form>
     <form [formGroup]="formDynamic" novalidate autocomplete="off">
         <ng-form-dynamic [(configs)]="controlDynamicLst" [form]="formDynamic"></ng-form-dynamic>

@@ -110,6 +110,9 @@
           "options": {
             "browserTarget": "angular-form-dynamic:build"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
