@@ -1,0 +1,13 @@
+<div [formGroup]="parentForm">
+    <div class="form-array" [formArrayName]="controlName">
+        <ng-template ngFor [ngForOf]="control.controls | keyvalue" let-cont let-i="index">
+            <ng-template [ngIf]="cont | isFormControl">
+                <ng-control [controlName]="cont.key"></ng-control>
+            </ng-template>
+
+            <ng-template [ngIf]="cont | isFormGroup">
+                <ng-group [controlName]="cont.key" [formGroupName]="i"></ng-group>
+            </ng-template>
+        </ng-template>
+    </div>
+</div>

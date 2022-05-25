@@ -1,0 +1,398 @@
+{
+    "level": 0,
+    "condType": 5,
+    "conds": [
+        {
+            "level": 1,
+            "condOperator": "Và",
+            "condType": 1,
+            "conds": [],
+            "actionRules": {
+                "eventId": 11,
+                "eventCond": 1,
+                "eventSelected": {
+                    "eventTypeId": 11,
+                    "category": "CUSTOMER_TRANSACTION",
+                    "eventName": "Chuyển tiền",
+                    "description": null,
+                    "activeStatus": 1,
+                    "processCode": null,
+                    "serviceCode": null,
+                    "parentEventTypeId": null,
+                    "timeSync": 1652397467208
+                }
+            },
+            "attributeRules": {
+                "attributeId": null,
+                "attributeSelected": null,
+                "attributeCond": null,
+                "attributeValue": null,
+                "attributeDateType": null,
+                "attributeDateValue": null,
+                "attributeDateValueTo": null,
+                "attributeDateOption": null
+            },
+            "workflowRules": {
+                "workflowId": null,
+                "workflowSelected": null,
+                "workflowCond": null
+            },
+            "stockpileRules": {
+                "stockpileId": null,
+                "rewardIdOfStockpile": null,
+                "stockpileSelected": null,
+                "rewardSelected": null,
+                "stockpileCond": null,
+                "stockpileEvent": 1
+            }
+        },
+        {
+            "level": 1,
+            "condOperator": "Và",
+            "condType": 2,
+            "conds": [],
+            "actionRules": {
+                "eventId": null,
+                "eventCond": null,
+                "eventSelected": null
+            },
+            "attributeRules": {
+                "attributeId": 3,
+                "attributeSelected": {
+                    "id": 3,
+                    "name": "Họ",
+                    "codeName": "NAME",
+                    "inputTypeForValue": "textbox",
+                    "description": null,
+                    "dataType": 2,
+                    "activeStatus": 1,
+                    "tableName": "configuration",
+                    "timeSync": 1652397466576
+                },
+                "attributeCond": 7,
+                "attributeValue": "Nguyen",
+                "attributeDateType": null,
+                "attributeDateValue": null,
+                "attributeDateValueTo": null,
+                "attributeDateOption": null
+            },
+            "workflowRules": {
+                "workflowId": null,
+                "workflowSelected": null,
+                "workflowCond": null
+            },
+            "stockpileRules": {
+                "stockpileId": null,
+                "rewardIdOfStockpile": null,
+                "stockpileSelected": null,
+                "rewardSelected": null,
+                "stockpileCond": null,
+                "stockpileEvent": 1
+            }
+        },
+        {
+            "level": 1,
+            "condOperator": "Và",
+            "condType": 2,
+            "conds": [],
+            "actionRules": {
+                "eventId": null,
+                "eventCond": null,
+                "eventSelected": null
+            },
+            "attributeRules": {
+                "attributeId": 5,
+                "attributeSelected": {
+                    "id": 5,
+                    "name": "Ngày sinh",
+                    "codeName": "BIRTHDAY",
+                    "inputTypeForValue": "textbox",
+                    "description": null,
+                    "dataType": 3,
+                    "activeStatus": 1,
+                    "timeSync": 1652397466576
+                },
+                "attributeCond": 16,
+                "attributeValue": null,
+                "attributeDateType": 20,
+                "attributeDateValue": "2022-05-22T17:00:00.000Z",
+                "attributeDateValueTo": null,
+                "attributeDateOption": null
+            },
+            "workflowRules": {
+                "workflowId": null,
+                "workflowSelected": null,
+                "workflowCond": null
+            },
+            "stockpileRules": {
+                "stockpileId": null,
+                "rewardIdOfStockpile": null,
+                "stockpileSelected": null,
+                "rewardSelected": null,
+                "stockpileCond": null,
+                "stockpileEvent": 1
+            }
+        },
+        {
+            "level": 1,
+            "condOperator": "Và",
+            "condType": 3,
+            "conds": [],
+            "actionRules": {
+                "eventId": null,
+                "eventCond": null,
+                "eventSelected": null
+            },
+            "attributeRules": {
+                "attributeId": null,
+                "attributeSelected": null,
+                "attributeCond": null,
+                "attributeValue": null,
+                "attributeDateType": null,
+                "attributeDateValue": null,
+                "attributeDateValueTo": null,
+                "attributeDateOption": null
+            },
+            "workflowRules": {
+                "workflowId": "WF-01G2PGVKR1Q004FGXH4FZRQHRE",
+                "workflowSelected": {
+                    "workflowId": "WF-01G2PGVKR1Q004FGXH4FZRQHRE",
+                    "campaignId": "CAMP-01G2NYC16PYTZ1P4WA074491YJ",
+                    "name": "tyu766",
+                    "description": "",
+                    "type": "CONDITIONS_TRIGGER",
+                    "triggerId": "TGS-01G2PGVQYR4ECGC4Q3GVXYSTQ3",
+                    "triggerType": "TRIGGER_SEGMENT",
+                    "bpmProcessId": "WF-01G2PGVKR1Q004FGXH4FZRQHRE",
+                    "usageStatus": "UNUSED",
+                    "status": 1,
+                    "goalOption": 0
+                },
+                "workflowCond": 1
+            },
+            "stockpileRules": {
+                "stockpileId": null,
+                "rewardIdOfStockpile": null,
+                "stockpileSelected": null,
+                "rewardSelected": null,
+                "stockpileCond": null,
+                "stockpileEvent": 1
+            }
+        },
+        {
+            "level": 1,
+            "condOperator": "Và",
+            "condType": 4,
+            "conds": [],
+            "actionRules": {
+                "eventId": null,
+                "eventCond": null,
+                "eventSelected": null
+            },
+            "attributeRules": {
+                "attributeId": null,
+                "attributeSelected": null,
+                "attributeCond": null,
+                "attributeValue": null,
+                "attributeDateType": null,
+                "attributeDateValue": null,
+                "attributeDateValueTo": null,
+                "attributeDateOption": null
+            },
+            "workflowRules": {
+                "workflowId": null,
+                "workflowSelected": null,
+                "workflowCond": null
+            },
+            "stockpileRules": {
+                "stockpileId": "ST0000002",
+                "rewardIdOfStockpile": "RW00002",
+                "stockpileSelected": {
+                    "creationUser": null,
+                    "creationDate": null,
+                    "updateUser": null,
+                    "updateDate": null,
+                    "stockpileId": "ST0000002",
+                    "name": "kho2",
+                    "description": "kho2",
+                    "status": 1,
+                    "usageStatus": "UNUSED",
+                    "activeStatus": "1",
+                    "tags": null
+                },
+                "rewardSelected": {
+                    "id": "RW00002",
+                    "itemType": 0,
+                    "creationUser": null,
+                    "creationDate": "2022-02-11T19:58:21",
+                    "updateUser": null,
+                    "updateDate": null,
+                    "rewardId": "RW00002",
+                    "name": "RW002",
+                    "description": "dessc",
+                    "rewardTypeId": 4,
+                    "discountValue": null,
+                    "discountPercentage": null,
+                    "discountMaxValue": null,
+                    "partnerVoucherId": null,
+                    "partnerId": null,
+                    "title": "Lời chúc may mắn",
+                    "content": "hello",
+                    "usageStatus": "unassigned",
+                    "moneySourceId": "Null",
+                    "tags": null,
+                    "isDeleted": false
+                },
+                "stockpileCond": 1,
+                "stockpileEvent": 1
+            }
+        },
+        {
+            "level": 1,
+            "condOperator": "Và",
+            "condType": 6,
+            "conds": [
+                {
+                    "level": 2,
+                    "condOperator": "Hoặc",
+                    "condType": 1,
+                    "conds": [],
+                    "actionRules": {
+                        "eventId": 13,
+                        "eventCond": 2,
+                        "eventSelected": {
+                            "eventTypeId": 13,
+                            "category": "CUSTOMER_TRANSACTION",
+                            "eventName": "Mua thẻ cào",
+                            "description": null,
+                            "activeStatus": 1,
+                            "processCode": null,
+                            "serviceCode": null,
+                            "parentEventTypeId": null,
+                            "timeSync": 1652397467208
+                        }
+                    },
+                    "attributeRules": {
+                        "attributeId": null,
+                        "attributeSelected": null,
+                        "attributeCond": null,
+                        "attributeValue": null,
+                        "attributeDateType": null,
+                        "attributeDateValue": null,
+                        "attributeDateValueTo": null,
+                        "attributeDateOption": null
+                    },
+                    "workflowRules": {
+                        "workflowId": null,
+                        "workflowSelected": null,
+                        "workflowCond": null
+                    },
+                    "stockpileRules": {
+                        "stockpileId": null,
+                        "rewardIdOfStockpile": null,
+                        "stockpileSelected": null,
+                        "rewardSelected": null,
+                        "stockpileCond": null,
+                        "stockpileEvent": 1
+                    }
+                },
+                {
+                    "level": 2,
+                    "condOperator": "Hoặc",
+                    "condType": null,
+                    "conds": [],
+                    "actionRules": {
+                        "eventId": null,
+                        "eventCond": null,
+                        "eventSelected": null
+                    },
+                    "attributeRules": {
+                        "attributeId": null,
+                        "attributeSelected": null,
+                        "attributeCond": null,
+                        "attributeValue": null,
+                        "attributeDateType": null,
+                        "attributeDateValue": null,
+                        "attributeDateValueTo": null,
+                        "attributeDateOption": null
+                    },
+                    "workflowRules": {
+                        "workflowId": null,
+                        "workflowSelected": null,
+                        "workflowCond": null
+                    },
+                    "stockpileRules": {
+                        "stockpileId": null,
+                        "rewardIdOfStockpile": null,
+                        "stockpileSelected": null,
+                        "rewardSelected": null,
+                        "stockpileCond": null,
+                        "stockpileEvent": 1
+                    }
+                }
+            ],
+            "actionRules": {
+                "eventId": null,
+                "eventCond": null,
+                "eventSelected": null
+            },
+            "attributeRules": {
+                "attributeId": null,
+                "attributeSelected": null,
+                "attributeCond": null,
+                "attributeValue": null,
+                "attributeDateType": null,
+                "attributeDateValue": null,
+                "attributeDateValueTo": null,
+                "attributeDateOption": null
+            },
+            "workflowRules": {
+                "workflowId": null,
+                "workflowSelected": null,
+                "workflowCond": null
+            },
+            "stockpileRules": {
+                "stockpileId": null,
+                "rewardIdOfStockpile": null,
+                "stockpileSelected": null,
+                "rewardSelected": null,
+                "stockpileCond": null,
+                "stockpileEvent": 1
+            }
+        },
+        {
+            "level": 1,
+            "condOperator": "Và",
+            "condType": null,
+            "conds": [],
+            "actionRules": {
+                "eventId": null,
+                "eventCond": null,
+                "eventSelected": null
+            },
+            "attributeRules": {
+                "attributeId": null,
+                "attributeSelected": null,
+                "attributeCond": null,
+                "attributeValue": null,
+                "attributeDateType": null,
+                "attributeDateValue": null,
+                "attributeDateValueTo": null,
+                "attributeDateOption": null
+            },
+            "workflowRules": {
+                "workflowId": null,
+                "workflowSelected": null,
+                "workflowCond": null
+            },
+            "stockpileRules": {
+                "stockpileId": null,
+                "rewardIdOfStockpile": null,
+                "stockpileSelected": null,
+                "rewardSelected": null,
+                "stockpileCond": null,
+                "stockpileEvent": 1
+            }
+        }
+    ]
+}

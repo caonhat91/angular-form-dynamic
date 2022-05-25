@@ -1,0 +1,22 @@
+{
+    "control1": 1,
+    "control2": 2,
+    "group": {
+        "control1": 1,
+        "control2": 2
+    },
+    "arrayControl": [
+        "control1",
+        "control2"
+    ],
+    "arrayGroup": [
+        {
+            "control1": 1,
+            "control2": 2
+        },
+        {
+            "control1": 1,
+            "control2": 2
+        }
+    ]
+}

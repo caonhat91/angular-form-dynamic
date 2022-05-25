@@ -1,0 +1,15 @@
+<div class="form-group" [formGroup]="control">
+    <ng-template ngFor [ngForOf]="control?.controls | keyvalue" let-cont>
+        <ng-template [ngIf]="cont | isFormControl">
+            <ng-control [controlName]="cont.key"></ng-control>
+        </ng-template>
+
+        <ng-template [ngIf]="cont | isFormGroup">
+            <ng-group [controlName]="cont.key" [formGroupName]="cont.key"></ng-group>
+        </ng-template>
+
+        <ng-template [ngIf]="cont | isFormArray">
+            <ng-array [controlName]="cont.key"></ng-array>
+        </ng-template>
+    </ng-template>
+</div>

@@ -1,128 +1,62 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ControlDynamic, ControlInputText } from './modules/form-dynamic/model';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HttpClientCustom } from './core/di-custom/http-client-custom';
+import { Form } from './core/utils/form.util';
 
 @Component({
-  selector: 'ng-root',
-  templateUrl: './app.component.html',
-  styles: []
+    selector: 'ng-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    animations: []
 })
 export class AppComponent implements OnInit {
-  reactiveForm!: FormGroup;
-  formDynamic!: FormGroup;
-  controlDynamicLst!: ControlDynamic[];
-  order: number = 0;
+    reactiveForm!: FormGroup;
 
-  get nativeElement(): HTMLElement {
-    return this.host.nativeElement as HTMLElement;
-  }
+    constructor(private http: HttpClientCustom) { }
 
-  get type(): FormControl {
-    return this.reactiveForm.get('type') as FormControl;
-  }
-
-  get controlType(): FormControl {
-    return this.reactiveForm.get('controlType') as FormControl;
-  }
-
-  get controlName(): FormControl {
-    return this.reactiveForm.get('controlName') as FormControl;
-  }
-
-  get controlLabel(): FormControl {
-    return this.reactiveForm.get('controlLabel') as FormControl;
-  }
-
-  get elementType(): FormControl {
-    return this.reactiveForm.get('elementType') as FormControl;
-  }
-
-  get isRequire(): FormControl {
-    return this.reactiveForm.get('isRequire') as FormControl;
-  }
-
-  constructor(private host: ElementRef) { }
-
-  ngOnInit(): void {
-    this.reactiveForm = this.buildForm;
-    this.clear();
-  }
-
-  clear(): void {
-    // this.reactiveForm.reset();
-    this.reactiveForm.patchValue({
-      type: 'control',
-      controlType: 'inputText',
-      controlLabel: '',
-      controlName: '',
-      elementType: 'element',
-      isRequire: false,
-    });
-    this.order = 0;
-    this.controlDynamicLst = [];
-    this.formDynamic = new FormGroup({});
-  }
-
-  onSubmit(): void {
-    if (this.invalid) {
-      return;
-    }
-    const isExisted = this.controlDynamicLst.find(conf => conf.controlName === this.controlName.value);
-    if (!isExisted) {
-      if (this.controlType.value == 'inputText') {
-        const inputTextControl = new ControlInputText(
-          {
-            type: this.type.value,
-            elementType: this.elementType.value,
-            controlName: this.controlName.value,
-            label: this.controlLabel.value,
-            required: this.isRequire.value,
-            order: this.order++
-          }
-        );
-        this.controlDynamicLst.push(inputTextControl);
-      }
-      if (this.controlType.value == 'select') {
-        // 
-      }
+    ngOnInit(): void {
+        this.reactiveForm = this.buildForm;
     }
 
-    const group: any = {};
-    this.controlDynamicLst.forEach((control: ControlDynamic) => {
-      let formElement;
-      if (control.type == 'control') {
-        formElement = control.required ? new FormControl(null, Validators.required) : new FormControl();
-      }
-      if (control.type == 'group') {
-        formElement = new FormGroup({});
-      }
-      if (control.type == 'array') {
-        formElement = new FormArray([]);
-      }
-
-      formElement && this.formDynamic.addControl(control.controlName, formElement);
-    });
-  }
-
-  private get invalid(): boolean {
-    this.reactiveForm.markAllAsTouched();
-    if (this.reactiveForm.invalid) {
-      const inputInvalid = this.nativeElement.querySelector('input.ng-invalid') as HTMLInputElement;
-      inputInvalid?.focus();
-      return true;
+    async generalData() {
+        // const data = await this.http.mock('form-dynamic').toPromise();
+        const data = await this.http.mock('data').toPromise();
+        this.objectData.patchValue(JSON.stringify(data));
+        this.formatJson();
     }
-    return false;
-  }
 
-  private get buildForm(): FormGroup {
-    return new FormGroup({
-      type: new FormControl('', Validators.required),
-      controlType: new FormControl('', Validators.required),
-      controlLabel: new FormControl('', Validators.required),
-      controlName: new FormControl('', Validators.required),
-      elementType: new FormControl('', Validators.required),
-      isRequire: new FormControl(false),
-    });
-  }
+    formatJson(): void {
+        this.objectData.patchValue(JSON.stringify(JSON.parse(this.objectData.value ?? '{}'), undefined, 4));
+    }
+
+    onSubmit(): void {
+        this.reactiveForm.markAllAsTouched();
+        if (this.reactiveForm.invalid) {
+            return;
+        }
+        const data = JSON.parse(this.objectData.value);
+        this.reactiveForm.removeControl('form');
+        this.reactiveForm.addControl('form', Form.buildForm(data));
+    }
+
+    onSubmitForm(controlName: string, controlValue: string): void {
+        this.form.get(controlName)?.patchValue(JSON.parse(controlValue));
+        console.log(controlName, this.form.get(controlName)?.value);
+        this.form.controls
+    }
+
+    get objectData(): FormControl {
+        return this.reactiveForm.get('objectData') as FormControl;
+    }
+
+    get form(): FormGroup {
+        return this.reactiveForm.get('form') as FormGroup;
+    }
+
+    private get buildForm(): FormGroup {
+        return new FormGroup({
+            objectData: new FormControl(null, Validators.required),
+        });
+    }
 
 }

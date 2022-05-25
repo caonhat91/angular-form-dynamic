@@ -1,88 +1,24 @@
-<div class="grid-cols-2">
-    <form class="ng-config" [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
-        <div class="grid">
-            <div class="control-group-inline">
-                <div class="control-group">
-                    <label for="typeControl" class="ng-control-color">Control:</label>
-                    <input type="radio" name="type" id="typeControl" formControlName="type" value="control" required>
-                </div>
-                <div class="control-group">
-                    <label for="typeGroup" class="ng-group-color">Group:</label>
-                    <input type="radio" name="type" id="typeGroup" formControlName="type" value="group" required>
-                </div>
-                <div class="control-group">
-                    <label for="typeArray" class="ng-array-color">Array:</label>
-                    <input type="radio" name="type" id="typeArray" formControlName="type" value="array" required>
-                </div>
+<div class="container">
+    <h3>General form dynamic with input JSON data</h3>
+    <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()" novalidate autocomplete="off">
 
-                <div class="alert" *ngIf="type.invalid && (type.dirty || type.touched)">
-                    <small *ngIf="type.errors?.['required']">
-                        Type is required.
-                    </small>
-                </div>
-            </div>
+        <label for="generalData">General Data</label>
+        <textarea id="generalData" cols="30" rows="10" formControlName="objectData" required></textarea>
+        <small *ngIf="objectData.invalid && (objectData.dirty || objectData.touched) && objectData.errors?.required">
+            Required
+        </small>
 
-            <div class="control-group">
-                <label for="controlType">Control Type:</label>
-                <select id="controlType" formControlName="controlType" required>
-                    <option value="inputText">Input Text</option>
-                    <option value="select">Select</option>
-                </select>
-                <div class="alert" *ngIf="controlType.invalid && (controlType.dirty || controlType.touched)">
-                    <small *ngIf="controlType.errors?.['required']">
-                        Control type is required.
-                    </small>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label for="controlLabel">Control Label:</label>
-                <input type="text" id="controlLabel" formControlName="controlLabel" required>
-                <div class="alert" *ngIf="controlLabel.invalid && (controlLabel.dirty || controlLabel.touched)">
-                    <small *ngIf="controlLabel.errors?.['required']">
-                        Control label is required.
-                    </small>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label for="controlName">Control Name:</label>
-                <input type="text" id="controlName" formControlName="controlName" required>
-                <div class="alert" *ngIf="controlName.invalid && (controlName.dirty || controlName.touched)">
-                    <small *ngIf="controlName.errors?.['required']">
-                        Control name is required.
-                    </small>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label for="elementType">Element Type:</label>
-                <select id="elementType" formControlName="elementType" required>
-                    <option value="element">Element</option>
-                    <option value="table">Table</option>
-                </select>
-                <small>Using with control is array</small>
-                <div class="alert" *ngIf="elementType.invalid && (elementType.dirty || elementType.touched)">
-                    <small *ngIf="elementType.errors?.['required']">
-                        Element type is required.
-                    </small>
-                </div>
-            </div>
-
-            <div class="control-group">
-                <label for="isRequire">Require:</label>
-                <input type="checkbox" id="isRequire" formControlName="isRequire">
-            </div>
-
-            <div class="button-group">
-                <button type="reset" (click)="clear()">Clear</button>
-                <button type="submit" class="btn-primary">Add Control</button>
-            </div>
-        </div>
-
-        <pre>{{formDynamic?.value || {} | json}}</pre>
+        <section class="button-group">
+            <button type="reset" (click)="reactiveForm.removeControl('form'); reactiveForm.reset();">Clear</button>
+            <button type="button" (click)="generalData()">General</button>
+            <button type="button" (click)="formatJson()">Format</button>
+            <button type="submit">Submit</button>
+        </section>
     </form>
-    <form [formGroup]="formDynamic" novalidate autocomplete="off">
-        <ng-form-dynamic [(configs)]="controlDynamicLst" [form]="formDynamic"></ng-form-dynamic>
-    </form>
+
+    <!-- <pre [textContent]="reactiveForm.getRawValue() | json"></pre> -->
+
+    <ng-template [ngIf]="form && form.value">
+        <ng-form-dynamic [form]="form"></ng-form-dynamic>
+    </ng-template>
 </div>
